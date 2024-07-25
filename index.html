@@ -4,32 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Website</title>
+    <title>Will Miner on the world wide web</title>
+    <link rel="stylesheet" href="./tufte.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <style>
+      .wave {
+        display: inline-block;
+        animation: wave-animation 2s infinite;
+        transform-origin: 70% 70%;
+      }
+
+      @keyframes wave-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+        10% {
+          transform: rotate(14deg);
+        }
+        20% {
+          transform: rotate(-8deg);
+        }
+        30% {
+          transform: rotate(14deg);
+        }
+        40% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+        60% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <p>Hi, I'm Will Miner. This is my home on the web.</p>
-      <p>I'm a designer based in NY and I currently work for Slack.</p>
-      <p>
-        I have over 10 years of experience in designing, developing, and leading
-        software projects. I like working with smart, humble people on things
-        that matter. If you’d like to chat, feel free to send me an email.
-      </p>
-      <p>Various, ongoing project</p>
-      <ul>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-      </ul>
-      <p>Speaking and writing</p>
-      <ul>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-      </ul>
-    </main>
+    <article>
+      <section>
+        <h1>
+          <span class="wave" id="waving-hand">👋🏾</span> Hi, I'm Will Miner.
+        </h1>
+        <p>This is my home on the web.</p>
+        <p>
+          I'm a software designer based in NY and I currently work for
+          <a href="https://slack.com/">Slack</a>.
+        </p>
+        <p>
+          I have over 10 years of experience designing, developing, and leading
+          software projects. I like working with smart, humble people on
+          problems that matter (or at least don't make things <i>worse</i>).
+        </p>
+        <p>
+          These kinds of pages always feel weird and stilted. I never know what
+          to put here. Anyways, If you’d like to chat, send me a message on
+          <a href="https://www.linkedin.com/in/williamminer/">LinkedIn</a>!
+        </p>
+      </section>
+    </article>
     <script src="index.js"></script>
   </body>
 </html>
