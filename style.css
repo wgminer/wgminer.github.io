@@ -34,3 +34,44 @@ article {
     transform: rotate(0deg);
   }
 }
+
+h2 {
+  font-size: 2rem;
+}
+
+img {
+  /* border-radius: 24px; */
+}
+
+ul {
+  padding-left: 1rem;
+  /* -webkit-padding-start: 2rem !important; */
+}
+
+ul.link-list > li {
+  margin-bottom: 1rem;
+}
+
+ul.link-list .item__title:hover {
+  text-decoration: underline;
+}
+
+.item__title {
+  color: rgba(0, 0, 255, 1);
+  padding-left: 0.5rem;
+}
+
+.item__description,
+.item__date {
+  padding-left: 0.5rem;
+  color: rgba(0, 0, 100, 0.5);
+  font-size: 0.75em;
+  /* font-family: sans-serif; */
+  /* text-transform: uppercase; */
+  /* letter-spacing: 1px; */
+  margin-top: -0.25rem;
+}
+
+.send-off {
+  margin-top: 10rem;
+}

@@ -220,7 +220,7 @@ section > dl,
 section > ol,
 section > ul {
   width: 50%;
-  -webkit-padding-start: 5%;
+  /* -webkit-padding-start: 5%; */
 }
 
 dt:not(:first-child),
