@@ -66,12 +66,29 @@ ul.link-list .item__title:hover {
   padding-left: 0.5rem;
   color: rgba(0, 0, 100, 0.5);
   font-size: 0.75em;
-  /* font-family: sans-serif; */
-  /* text-transform: uppercase; */
-  /* letter-spacing: 1px; */
   margin-top: -0.25rem;
 }
 
 .send-off {
   margin-top: 10rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #151515;
+    color: #ddd;
+  }
+
+  .item__title {
+    color: rgb(100, 100, 255);
+    padding-left: 0.5rem;
+  }
+
+  .item__description,
+  .item__date {
+    padding-left: 0.5rem;
+    color: rgba(200, 200, 200, 1);
+    font-size: 0.75em;
+    margin-top: -0.25rem;
+  }
 }
