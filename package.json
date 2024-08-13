@@ -8,5 +8,9 @@
     "dev": "npx live-server"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "fs": "^0.0.1-security"
+  }
 }
