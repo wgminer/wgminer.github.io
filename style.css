@@ -73,6 +73,39 @@ ul.link-list .item__title:hover {
   margin-top: 10rem;
 }
 
+ul.bookmark-list {
+  padding: 0;
+  list-style: none;
+}
+
+ul.bookmark-list > li {
+  margin-bottom: 1rem;
+  max-width: 400px;
+}
+
+ul.bookmark-list .item__title:hover {
+  text-decoration: underline;
+}
+
+.bookmark__title {
+  color: rgba(0, 0, 255, 1);
+}
+
+.bookmark__image {
+  max-width: 400px;
+}
+
+.bookmark__excerpt {
+  color: rgba(0, 0, 100, 0.5);
+  font-size: 0.75em;
+  line-height: 1.5;
+  margin-top: -0.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #151515;
