@@ -73,6 +73,10 @@ ul.link-list .item__title:hover {
   margin-top: 10rem;
 }
 
+.now-list a {
+  color: rgba(0, 0, 255, 1);
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #151515;
