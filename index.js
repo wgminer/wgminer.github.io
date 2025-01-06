@@ -30,3 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(removeWaveTimeout); // Clear the timeout to avoid removing the wave again
   });
 });
+
+document.querySelectorAll(".section-toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !isExpanded);
+    const content = document.getElementById(
+      button.getAttribute("aria-controls")
+    );
+    content.classList.toggle("hidden");
+  });
+});

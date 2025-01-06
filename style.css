@@ -96,3 +96,67 @@ ul.link-list .item__title:hover {
     margin-top: -0.25rem;
   }
 }
+
+.section-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  background: rgba(0, 0, 255, 0.1);
+  border: none;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-toggle::after {
+  content: "▼";
+  font-size: 0.8em;
+  transition: transform 0.2s;
+}
+
+.section-toggle[aria-expanded="false"]::after {
+  transform: rotate(-90deg);
+}
+
+.hidden {
+  display: none;
+}
+
+.section-toggle:hover {
+  background: rgba(0, 0, 255, 0.25);
+}
+
+.section-toggle:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.services ul {
+  margin: 0;
+  padding: 1.5rem;
+  list-style-type: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.services li {
+  margin-bottom: 1rem;
+}
+
+.services li:last-child {
+  margin-bottom: 0;
+}
+
+.section-toggle span {
+  font-family: inherit;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.7rem;
+  margin: 0;
+
+  line-height: 1;
+}
