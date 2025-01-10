@@ -77,26 +77,6 @@ ul.link-list .item__title:hover {
   color: rgba(0, 0, 255, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #151515;
-    color: #ddd;
-  }
-
-  .item__title {
-    color: rgb(100, 100, 255);
-    padding-left: 0.5rem;
-  }
-
-  .item__description,
-  .item__date {
-    padding-left: 0.5rem;
-    color: rgba(200, 200, 200, 1);
-    font-size: 0.75em;
-    margin-top: -0.25rem;
-  }
-}
-
 .section-toggle {
   width: 100%;
   text-align: left;
@@ -131,6 +111,7 @@ ul.link-list .item__title:hover {
 }
 
 .section-toggle:focus {
+  background: rgba(0, 0, 255, 0.25);
   outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
@@ -159,4 +140,41 @@ ul.link-list .item__title:hover {
   margin: 0;
 
   line-height: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #151515;
+    color: #ddd;
+  }
+
+  .item__title {
+    color: rgb(100, 100, 255);
+    padding-left: 0.5rem;
+  }
+
+  .item__description,
+  .item__date {
+    padding-left: 0.5rem;
+    color: rgba(200, 200, 200, 1);
+    font-size: 0.75em;
+    margin-top: -0.25rem;
+  }
+
+  .section-toggle {
+    color: #fff;
+    background-color: rgb(100, 100, 255);
+  }
+
+  .services ul {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-toggle:hover {
+    background: rgba(100, 100, 255, 0.75);
+  }
+
+  .section-toggle:focus {
+    background: rgba(100, 100, 255, 0.75);
+  }
 }
