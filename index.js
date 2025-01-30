@@ -2,42 +2,62 @@ document.addEventListener("DOMContentLoaded", () => {
   const wavingHand = document.getElementById("waving-hand");
   const helloElement = document.querySelector("h1");
 
-  const hellos = ["Hello", "Welcome", "Good to see you!", "Sup", "Yo", "Hola"];
-  let currentHelloIndex = 0;
+  // Greetings mapped by region/language
+  const greetings = {
+    "en-US": {
+      TX: "Howdy",
+      NY: "Hey there",
+      HI: "Aloha",
+      default: "Hello",
+    },
+    fr: {
+      default: "Bonjour",
+    },
+    es: {
+      default: "¡Hola!",
+    },
+    it: {
+      default: "Ciao",
+    },
+    de: {
+      default: "Hallo",
+    },
+    ja: {
+      default: "こんにちは",
+    },
+    default: "Hello",
+  };
 
-  function changeHello() {
-    currentHelloIndex = (currentHelloIndex + 1) % hellos.length;
-    helloElement.innerHTML = `<span class="wave" id="waving-hand">👋🏾</span> ${hellos[currentHelloIndex]}`;
+  function getGreeting(locale, region) {
+    const language = locale.split("-")[0];
+    const languageGreetings =
+      greetings[locale] || greetings[language] || greetings.default;
+    return (
+      (region && languageGreetings[region]) ||
+      languageGreetings.default ||
+      greetings.default
+    );
   }
 
+  // Get user's location and language
+  const userLocale = navigator.language;
+
+  // Get region from timezone as a fallback method
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const region = timeZone.split("/")[1]?.slice(0, 2);
+
+  const greeting = getGreeting(userLocale, region);
+  helloElement.innerHTML = `<span class="wave" id="waving-hand">👋🏾</span> ${greeting}!`;
+
+  // Rest of the existing wave animation code
   function removeWave() {
     wavingHand.classList.remove("wave");
   }
 
-  // Change the hello word every 1 seconds
-  // const helloInterval = setInterval(changeHello, 1000);
+  const removeWaveTimeout = setTimeout(removeWave, 15000);
 
-  // Remove the wave animation after 15 seconds
-  const removeWaveTimeout = setTimeout(() => {
-    removeWave();
-    // clearInterval(helloInterval); // Stop changing hello words after 15 seconds
-  }, 15000);
-
-  // Remove the wave animation when hovered over
   wavingHand.addEventListener("mouseover", () => {
     removeWave();
-    // clearInterval(helloInterval); // Stop changing hello words when hovered over
-    clearTimeout(removeWaveTimeout); // Clear the timeout to avoid removing the wave again
-  });
-});
-
-document.querySelectorAll(".section-toggle").forEach((button) => {
-  button.addEventListener("click", () => {
-    const isExpanded = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", !isExpanded);
-    const content = document.getElementById(
-      button.getAttribute("aria-controls")
-    );
-    content.classList.toggle("hidden");
+    clearTimeout(removeWaveTimeout);
   });
 });
