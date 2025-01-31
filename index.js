@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Location-based greeting functionality
   const wavingHand = document.getElementById("waving-hand");
   const helloElement = document.querySelector("h1");
 
@@ -41,15 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Get user's location and language
   const userLocale = navigator.language;
-
-  // Get region from timezone as a fallback method
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const region = timeZone.split("/")[1]?.slice(0, 2);
 
   const greeting = getGreeting(userLocale, region);
   helloElement.innerHTML = `<span class="wave" id="waving-hand">👋🏾</span> ${greeting}!`;
 
-  // Rest of the existing wave animation code
+  // Wave animation functionality
   function removeWave() {
     wavingHand.classList.remove("wave");
   }
@@ -59,5 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
   wavingHand.addEventListener("mouseover", () => {
     removeWave();
     clearTimeout(removeWaveTimeout);
+  });
+
+  // Dropdown functionality (restored from original)
+  document.querySelectorAll(".section-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", !isExpanded);
+      const content = document.getElementById(
+        button.getAttribute("aria-controls")
+      );
+      content.classList.toggle("hidden");
+    });
   });
 });
