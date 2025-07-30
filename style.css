@@ -163,7 +163,7 @@ ul.link-list .item__title:hover {
 
   .section-toggle {
     color: #fff;
-    background-color: rgb(100, 100, 255);
+    background: rgba(100, 100, 255, 0.75);
   }
 
   .services ul {
@@ -171,10 +171,10 @@ ul.link-list .item__title:hover {
   }
 
   .section-toggle:hover {
-    background: rgba(100, 100, 255, 0.75);
+    background: rgba(100, 100, 255, 0.5);
   }
 
   .section-toggle:focus {
-    background: rgba(100, 100, 255, 0.75);
+    background: rgba(100, 100, 255, 0.5);
   }
 }
