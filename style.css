@@ -294,7 +294,7 @@ ul.link-list .item__title a:hover {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #00002f 50%, #070a13 100%);
     color: #ddd;
     min-height: 100vh;
   }

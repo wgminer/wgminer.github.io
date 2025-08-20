@@ -82,8 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // Click emoji system
 function initializeClickEmojis() {
   const emojis = ['✨', '🎉', '🌟', '💫', '⭐', '🎊', '🔥', '💥', '🌈', '🦋', '🌺', '🎈', '🎯', '🚀', '💎', '🎪', '🎭', '🎨', '🎵', '🎸'];
-  let lastTrailTime = 0;
-  const trailThrottle = 100; // Milliseconds between trail emojis
   
   // Click emoji functionality
   document.addEventListener('click', (e) => {
@@ -93,15 +91,6 @@ function initializeClickEmojis() {
     }
     
     createEmoji(e.clientX, e.clientY, 'click-emoji');
-  });
-  
-  // Cursor trail functionality
-  document.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    if (now - lastTrailTime > trailThrottle) {
-      createEmoji(e.clientX, e.clientY, 'trail-emoji');
-      lastTrailTime = now;
-    }
   });
   
   function createEmoji(x, y, className) {
