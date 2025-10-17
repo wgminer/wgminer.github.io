@@ -1,4 +1,4 @@
-body {
+html {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #f0f2ff 100%);
   min-height: 100vh;
 }
@@ -124,6 +124,57 @@ ul.link-list .item__title a:hover {
   background: rgba(0, 0, 255, 0.25);
   outline: 2px solid #0066cc;
   outline-offset: 2px;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: rgba(0, 0, 255, 1) !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(0, 0, 255, 1);
+  border-radius: 0.375rem;
+  font-weight: 400;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  /* Reset inherited styles */
+  margin: 0;
+  font-family: inherit;
+  line-height: 1.2;
+  vertical-align: middle;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+  background-position: initial !important;
+  -webkit-background-size: auto !important;
+  -moz-background-size: auto !important;
+  /* Override Tufte CSS underline effects */
+  background: transparent !important;
+}
+
+.cta-button:hover {
+  background: rgba(0, 0, 255, 0.05) !important;
+  border-color: rgba(0, 0, 200, 1);
+  text-decoration: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
+  transform: none;
+}
+
+.cta-button:focus {
+  outline: 2px solid rgba(0, 0, 255, 0.3);
+  outline-offset: 2px;
+}
+
+.cta-button svg {
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin-top: -1px;
 }
 
 .services ul {
@@ -294,13 +345,12 @@ ul.link-list .item__title a:hover {
 
 @media (prefers-color-scheme: dark) {
   html {
-    background: #0a0a0a;
+    background: linear-gradient(135deg, #0a0a0a 0%, #00002f 50%, #070a13 100%);
+    min-height: 100vh;
   }
   
   body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #00002f 50%, #070a13 100%);
     color: #ddd;
-    min-height: 100vh;
   }
 
   .loading-spinner {
@@ -341,5 +391,15 @@ ul.link-list .item__title a:hover {
 
   .section-toggle:focus {
     background: rgba(100, 100, 255, 0.5);
+  }
+
+  .cta-button {
+    color: rgba(153, 153, 255, 1) !important;
+    border-color: rgba(153, 153, 255, 1);
+  }
+
+  .cta-button:hover {
+    background: rgba(153, 153, 255, 0.1);
+    border-color: rgba(153, 153, 255, 0.8);
   }
 }
