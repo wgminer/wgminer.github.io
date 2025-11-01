@@ -4,36 +4,126 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Will Miner on the world wide web</title>
+    <title>Will Miner :middot; Home</title>
     <link rel="stylesheet" href="./tufte.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <article>
-      <h1><span class="wave" id="waving-hand">👋🏾</span> Hello!</h1>
+      <h1>Will Miner</h1>
       <section>
         <p class="subtitle">
-          My name is William Miner.
-          <span class="marginnote">
-            <img src="./img/full.jpeg" alt="Image of me, Will Miner!" /> On a
-            good day, this is what I look like!
-          </span>
-        </p>
-        <p>This is my home on the web.</p>
-        <p>
-          I'm a software designer and engineer based in New York. I currently
-          work for
-          <a href="https://slack.com/">Slack</a>, where I lead design teams
-          focused on automation, AI, and line of business solutions.
+          Hi, I'm Will Miner, a designer and<br> product leader based in New York.
         </p>
         <p>
-          Outside of work, I'm an avid gardener, runner, fisherman, husband, and
-          dad. Find me on
-          <a href="https://www.linkedin.com/in/williamminer/">LinkedIn</a> to
-          get in touch.
+          I build tools that help people think, communicate, and get things done. Most recently at
+          <a href="https://slack.com/">Slack</a>, I lead design across automation and AI. 
+          My work lives at the intersection of human systems and software systems, 
+          where a small change in interface can shift how teams collaborate or how someone feels about their own competence.
+        </p>
+        <p>
+          I've spent the last fifteen years moving between design, code, and leadership, chasing clarity and craft in all three. 
+          I like work that rewards patience and asks for care. 
+          Outside of it, I write, build furniture, and tend to a garden that's always halfway wild.
         </p>
       </section>
+
+      <div id="random-art" style="max-width:720px;margin:24px auto;font:14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;">
+        <div id="art-img" style="aspect-ratio: 3/2; background:#f5f5f7; display:flex; align-items:center; justify-content:center; color:#777;">Loading…</div>
+        <div id="art-meta" style="margin-top:12px; color:#222;"></div>
+      </div>
+      
+      <script>
+      (async function () {
+        const imgEl = document.getElementById('art-img');
+        const metaEl = document.getElementById('art-meta');
+      
+        // Tune these to your taste
+        const KEYWORDS = ["etching","engraving","print","woodcut","lithograph"];
+        const PICK = (arr) => arr[Math.floor(Math.random() * arr.length)];
+      
+        async function getMetRandom() {
+          const q = encodeURIComponent(PICK(KEYWORDS));
+          const searchURL = `https://collectionapi.metmuseum.org/public/collection/v1/search?isPublicDomain=true&hasImages=true&q=${q}`;
+          const search = await fetch(searchURL).then(r => r.json());
+          if (!search?.objectIDs?.length) throw new Error("No Met results");
+          // Try up to 10 random IDs to avoid occasional empties
+          for (let i = 0; i < 10; i++) {
+            const id = PICK(search.objectIDs);
+            const obj = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(r => r.json());
+            const img = obj.primaryImageSmall || obj.primaryImage;
+            if (img) {
+              return {
+                src: img,
+                title: obj.title || "Untitled",
+                maker: obj.artistDisplayName || "Unknown",
+                date: obj.objectDate || "",
+                credit: "The Metropolitan Museum of Art",
+                link: obj.objectURL || "https://www.metmuseum.org/",
+                provider: "met"
+              };
+            }
+          }
+          throw new Error("Met objects lacked images");
+        }
+      
+        async function getClevelandRandom() {
+          const q = encodeURIComponent(PICK(KEYWORDS));
+          // cc0=1 for open images, has_image=1 ensures imagery
+          const url = `https://openaccess-api.clevelandart.org/api/artworks?cc0=1&has_image=1&q=${q}&limit=100`;
+          const data = await fetch(url).then(r => r.json());
+          const items = data?.data?.filter(d => d?.images?.web?.url);
+          if (!items?.length) throw new Error("No Cleveland results");
+          const obj = PICK(items);
+          return {
+            src: obj.images.web.url,
+            title: obj.title || "Untitled",
+            maker: obj.creators?.[0]?.description || obj.creator || "Unknown",
+            date: obj.creation_date || obj.date_text || "",
+            credit: "Cleveland Museum of Art",
+            link: obj.url || "https://www.clevelandart.org/art/collection",
+            provider: "cma"
+          };
+        }
+      
+        async function loadRandom() {
+          try {
+            let art;
+            try {
+              art = await getMetRandom();  // no key, fast
+            } catch {
+              art = await getClevelandRandom();  // strong fallback
+            }
+      
+            // Render
+            imgEl.innerHTML = "";
+            const img = new Image();
+            img.loading = "lazy";
+            img.decoding = "async";
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+            img.src = art.src;
+            img.alt = `${art.title} by ${art.maker} ${art.date ? "(" + art.date + ")" : ""}`;
+            imgEl.appendChild(img);
+      
+            metaEl.innerHTML = `
+              <strong>${art.title}</strong>${art.date ? ", " + art.date : ""}<br>
+              ${art.maker}<br>
+              <a href="${art.link}" target="_blank" rel="noopener">Source: ${art.credit}</a>
+            `;
+          } catch (e) {
+            imgEl.textContent = "Could not load an image right now.";
+            metaEl.textContent = "";
+            console.error(e);
+          }
+        }
+      
+        // Click to refresh
+        imgEl.addEventListener("click", loadRandom);
+        await loadRandom();
+      })();
+      </script>
 
       <section>
         <h2>Speaking and writing</h2>
