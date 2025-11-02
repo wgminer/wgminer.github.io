@@ -94,6 +94,9 @@
     container.style.margin = "24px auto";
     container.style.font = "14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
     container.style.position = "relative";
+    container.setAttribute("role", "button");
+    container.setAttribute("aria-label", "Load a new piece of artwork");
+    container.tabIndex = 0;
     
     container.innerHTML = `
       <div id="${imgId}" style="aspect-ratio: 3/2; background:#F5F5F7; display:flex; align-items:center; justify-content:center; color:#777; cursor:pointer; position:relative;">Loading…</div>
@@ -104,20 +107,31 @@
     const metaEl = document.getElementById(metaId);
     
     // Show tooltip on hover, hide on mouse leave
-    container.addEventListener("mouseenter", () => {
+    const showMeta = () => {
       metaEl.style.opacity = "1";
-    });
-    container.addEventListener("mouseleave", () => {
+    };
+    const hideMeta = () => {
       metaEl.style.opacity = "0";
-    });
+    };
+    container.addEventListener("mouseenter", showMeta);
+    container.addEventListener("mouseleave", hideMeta);
+    container.addEventListener("focus", showMeta);
+    container.addEventListener("blur", hideMeta);
     
     // Click to refresh (only when clicking on image area, not tooltip links)
+    const refreshArt = () => loadRandom(imgEl, metaEl);
     container.addEventListener("click", (e) => {
       // Don't refresh if clicking on a link or within the tooltip
       if (e.target.tagName === "A" || metaEl.contains(e.target)) return;
-      loadRandom(imgEl, metaEl);
+      refreshArt();
     });
-    await loadRandom(imgEl, metaEl);
+    container.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        refreshArt();
+      }
+    });
+    await refreshArt();
   }
   
   // Initialize all art containers when DOM is ready
@@ -135,4 +149,3 @@
     initAllArtContainers();
   }
 })();
-
