@@ -50,7 +50,7 @@
     };
   }
 
-  async function loadRandom(imgEl, metaEl) {
+  async function loadRandom(imgEl, metaEl, refreshButton) {
     try {
       let art;
       try {
@@ -66,15 +66,29 @@
       img.decoding = "async";
       img.style.maxWidth = "100%";
       img.style.height = "auto";
+      img.style.display = "block";
+      img.style.border = "1px solid #e0e0e0";
       img.src = art.src;
       img.alt = `${art.title} by ${art.maker} ${art.date ? "(" + art.date + ")" : ""}`;
       imgEl.appendChild(img);
 
       metaEl.innerHTML = `
-        <strong>${art.title}</strong>${art.date ? ", " + art.date : ""}<br>
-        ${art.maker}<br>
-        <a href="${art.link}" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Source: ${art.credit}</a>
+        <div style="position:relative;">
+          <strong>${art.title}</strong>${art.date ? ", " + art.date : ""}<br>
+          ${art.maker}<br>
+          <a href="${art.link}" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Source: ${art.credit}</a><br>
+          <a href="#" class="refresh-art-link" style="position:absolute; right:0; top:0; color:#fff; text-decoration:underline;">Refresh image</a>
+        </div>
       `;
+      
+      // Re-attach click handler to the refresh button
+      const refreshLink = metaEl.querySelector('.refresh-art-link');
+      if (refreshLink && refreshButton) {
+        refreshLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          refreshButton();
+        });
+      }
     } catch (e) {
       imgEl.textContent = "Could not load an image right now.";
       metaEl.textContent = "";
@@ -94,44 +108,46 @@
     container.style.margin = "24px auto";
     container.style.font = "14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
     container.style.position = "relative";
-    container.setAttribute("role", "button");
-    container.setAttribute("aria-label", "Load a new piece of artwork");
-    container.tabIndex = 0;
     
     container.innerHTML = `
-      <div id="${imgId}" style="aspect-ratio: 3/2; background:#F5F5F7; display:flex; align-items:center; justify-content:center; color:#777; cursor:pointer; position:relative;">Loading…</div>
+      <div id="${imgId}" style="aspect-ratio: 3/2; min-height:300px; background:#F5F5F7; display:flex; align-items:center; justify-content:center; color:#777; position:relative;">Loading…</div>
       <div id="${metaId}" style="position:absolute; bottom:12px; left:12px; right:12px; background:rgba(0,0,0,0.8); color:#fff; padding:12px; border-radius:6px; opacity:0; transition:opacity 0.2s ease-in-out; z-index:10;"></div>
     `;
     
     const imgEl = document.getElementById(imgId);
     const metaEl = document.getElementById(metaId);
     
+    // Refresh function
+    const refreshArt = () => loadRandom(imgEl, metaEl, refreshArt);
+    await refreshArt();
+    
+    // Auto-rotate art every 30 seconds
+    let refreshInterval = null;
+    const startInterval = () => {
+      if (refreshInterval) clearInterval(refreshInterval);
+      refreshInterval = setInterval(refreshArt, 30000);
+    };
+    const stopInterval = () => {
+      if (refreshInterval) {
+        clearInterval(refreshInterval);
+        refreshInterval = null;
+      }
+    };
+    
+    // Start the interval
+    startInterval();
+    
     // Show tooltip on hover, hide on mouse leave
     const showMeta = () => {
       metaEl.style.opacity = "1";
+      stopInterval(); // Pause auto-refresh on hover
     };
     const hideMeta = () => {
       metaEl.style.opacity = "0";
+      startInterval(); // Resume auto-refresh when hover ends
     };
     container.addEventListener("mouseenter", showMeta);
     container.addEventListener("mouseleave", hideMeta);
-    container.addEventListener("focus", showMeta);
-    container.addEventListener("blur", hideMeta);
-    
-    // Click to refresh (only when clicking on image area, not tooltip links)
-    const refreshArt = () => loadRandom(imgEl, metaEl);
-    container.addEventListener("click", (e) => {
-      // Don't refresh if clicking on a link or within the tooltip
-      if (e.target.tagName === "A" || metaEl.contains(e.target)) return;
-      refreshArt();
-    });
-    container.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        refreshArt();
-      }
-    });
-    await refreshArt();
   }
   
   // Initialize all art containers when DOM is ready
