@@ -46,9 +46,11 @@
       <h1>Will Miner</h1>
       <section>
         <p>
-          Hi, I'm Will Miner. I lead product design at Slack, where my team works on platform, AI, and the tools that help people and agents get work done together. Over
+          Hi, I'm Will Miner. I lead product design at
+          <a href="https://slack.com/">Slack</a>, where my team works on platform, AI, and the tools that help people and agents get work done together. Over
           <a href="https://www.linkedin.com/in/williamminer/">fifteen years</a>
-          I've led design and product teams at Slack, 2U, and Intel, moving through EdTech, semiconductors, and enterprise software along the way.
+          I've led design and product teams at
+          <a href="https://slack.com/">Slack</a>, 2U, and Intel, moving through EdTech, semiconductors, and enterprise software along the way.
         </p>
 
         <p>
@@ -71,6 +73,56 @@
       </section>
 
       <section>
+        <h2>Work</h2>
+        <ul class="link-list work-list">
+          <li>
+            <span class="work-list__logo-frame">
+              <img class="work-list__logo work-list__logo--slack" src="./img/logos/slack.svg" alt="" />
+            </span>
+            <div class="work-list__body">
+              <div class="work-list__headline">
+                <a class="item__title work-list__company" href="https://slack.com/">Slack</a>
+                <span class="item__date">2021 – present</span>
+              </div>
+              <ul class="work-list__roles">
+                <li>VP, Product Design</li>
+                <li>Director, Product Design</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="work-list__logo-frame">
+              <img class="work-list__logo work-list__logo--2u" src="./img/logos/2u.svg" alt="" />
+            </span>
+            <div class="work-list__body">
+              <div class="work-list__headline">
+                <span class="item__title work-list__company">2U</span>
+                <span class="item__date">2014 - 2021</span>
+              </div>
+              <ul class="work-list__roles">
+                <li>VP, General Manager</li>
+                <li>Head of User Experience</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="work-list__logo-frame">
+              <img class="work-list__logo work-list__logo--intel" src="./img/logos/intel.svg" alt="" />
+            </span>
+            <div class="work-list__body">
+              <div class="work-list__headline">
+                <span class="item__title work-list__company">Intel</span>
+                <span class="item__date">2011 - 2014</span>
+              </div>
+              <ul class="work-list__roles">
+                <li>Human Factors Engineer</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Projects</h2>
         <ul class="link-list">
             <li>
@@ -78,7 +130,12 @@
                 <a target="_blank" href="https://wgminer.github.io/garden-blog/" rel="noopener noreferrer">Garden Blog<span class="sr-only"> (opens in new tab)</span></a>
               </div>
               <div class="item__description">
-                Notes and photos from my garden.
+                <p>Notes and photos from my garden.</p>
+                <p>
+                  I started it as a place to remember what I planted where, what actually survived the heat and the
+                  deer, and what I would do differently next season. It is part diary and part reference for myself,
+                  with enough pictures that I can scroll back and see how a bed has changed year to year.
+                </p>
               </div>
             </li>
             <li>
@@ -86,7 +143,12 @@
                 <a target="_blank" href="https://williamminer.com/world-clock?zones=NYC+BER+HNL+SEA" rel="noopener noreferrer">World Clock<span class="sr-only"> (opens in new tab)</span></a>
               </div>
               <div class="item__description">
-                A simple, elegant way to view the time across multiple time zones.
+                <p>A simple, elegant way to view the time across multiple time zones.</p>
+                <p>
+                  I built it for the small daily headache of coordinating across cities without opening a calendar app
+                  or a noisy world-clock widget. You pick the places that matter, see them at a glance, and tweak the
+                  layout when your team or your travel plans shift.
+                </p>
               </div>
             </li>
             <li>
@@ -94,7 +156,12 @@
                 <a target="_blank" href="https://cuneiform-88b0a.web.app/" rel="noopener noreferrer">WordCalc<span class="sr-only"> (opens in new tab)</span></a>
               </div>
               <div class="item__description">
-                An LLM-based text transformer for proofreading and text improvement.
+                <p>An LLM-based text transformer for proofreading and text improvement.</p>
+                <p>
+                  It is an experiment in how far you can push a single text box: paste rough copy, ask for a tighter
+                  tone or clearer structure, and iterate in place instead of bouncing between tabs. I use it as a
+                  scratchpad when I want a second pass on email, talks, or long Slack threads before I send them.
+                </p>
               </div>
             </li>
             <li>
@@ -102,7 +169,12 @@
                 <a target="_blank" href="https://wgminer.github.io/sounds/" rel="noopener noreferrer">Sounds<span class="sr-only"> (opens in new tab)</span></a>
               </div>
               <div class="item__description">
-                Ambient recordings I've collected over the years.
+                <p>Ambient recordings I've collected over the years.</p>
+                <p>
+                  Most of these are ordinary places—a river after work, rain on a porch, a city square at night—captured
+                  on walks and trips when I remembered to hit record. I keep the site as a quiet listening archive for
+                  headphones, and a reminder of how much texture there is in background noise once you stop tuning it out.
+                </p>
               </div>
             </li>
         </ul>
@@ -118,26 +190,31 @@
         aria-label="Typography and layout"
         hidden
       >
-        <div class="theme-panel__header">
-          <h2 class="theme-panel__title">Theme</h2>
-          <button type="button" class="theme-panel__close" id="theme-panel-close" aria-label="Close theme panel">
-            Close
-          </button>
-        </div>
-
         <div class="theme-panel__scroll">
           <section class="theme-panel__section">
-            <h3 class="theme-panel__label">Body font</h3>
+            <p class="theme-panel__hint">Main heading (H1).</p>
+            <h3 class="theme-panel__label">Title font</h3>
+            <label class="theme-panel__sr" for="theme-font-display">Title font</label>
+            <select class="theme-panel__select" id="theme-font-display" size="6"></select>
+          </section>
+
+          <section class="theme-panel__section">
             <p class="theme-panel__hint">Paragraphs, lists, and UI.</p>
+            <h3 class="theme-panel__label">Body font</h3>
             <label class="theme-panel__sr" for="theme-font-body">Body font</label>
             <select class="theme-panel__select" id="theme-font-body" size="6"></select>
           </section>
 
           <section class="theme-panel__section">
-            <h3 class="theme-panel__label">Title font</h3>
-            <p class="theme-panel__hint">Main heading (H1).</p>
-            <label class="theme-panel__sr" for="theme-font-display">Title font</label>
-            <select class="theme-panel__select" id="theme-font-display" size="6"></select>
+            <p class="theme-panel__hint">Base size and heading steps together.</p>
+            <h3 class="theme-panel__label">Type scale</h3>
+            <label class="theme-panel__sr" for="theme-type-scale">Type scale</label>
+            <select class="theme-panel__select" id="theme-type-scale">
+              <option value="compact">Compact — smaller body, tighter headings</option>
+              <option value="balanced">Balanced — default rhythm</option>
+              <option value="comfortable">Comfortable — a bit more room</option>
+              <option value="generous">Generous — largest type</option>
+            </select>
           </section>
 
           <section class="theme-panel__section">
@@ -158,35 +235,11 @@
             </div>
           </section>
 
-          <section class="theme-panel__section">
-            <h3 class="theme-panel__label">Hierarchy</h3>
-            <ul class="theme-panel__toggles">
-              <li>
-                <label class="theme-toggle">
-                  <input type="checkbox" id="theme-h-strong-h2" />
-                  <span class="theme-toggle__text">Stronger H2</span>
-                </label>
-              </li>
-              <li>
-                <label class="theme-toggle">
-                  <input type="checkbox" id="theme-h-open-sections" />
-                  <span class="theme-toggle__text">Open section rhythm</span>
-                </label>
-              </li>
-              <li>
-                <label class="theme-toggle">
-                  <input type="checkbox" id="theme-h-spacious-lists" />
-                  <span class="theme-toggle__text">Spacious list items</span>
-                </label>
-              </li>
-              <li>
-                <label class="theme-toggle">
-                  <input type="checkbox" id="theme-h-large-link-titles" />
-                  <span class="theme-toggle__text">Larger link titles</span>
-                </label>
-              </li>
-            </ul>
-          </section>
+          <div class="theme-panel__footer">
+            <button type="button" class="theme-panel__reset" id="theme-reset">
+              Reset to defaults
+            </button>
+          </div>
         </div>
       </aside>
     </div>

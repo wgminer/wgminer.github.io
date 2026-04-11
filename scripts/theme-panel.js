@@ -3,6 +3,9 @@
 
   var STORAGE_KEY = "willminer-theme-panel-v1";
 
+  /** @type {string[]} */
+  var TYPE_SCALES = ["compact", "balanced", "comfortable", "generous"];
+
   /** @type {{ id: string, label: string, google?: string }} */
   var FONTS = [
     { id: "default", label: "Default (system fonts)" },
@@ -56,13 +59,8 @@
       open: false,
       bodyFontId: "default",
       displayFontId: "default",
+      typeScale: "balanced",
       lineHeight: 1.5,
-      hierarchy: {
-        strongH2: false,
-        openSections: false,
-        spaciousLists: false,
-        largeLinkTitles: false,
-      },
     };
   }
 
@@ -75,11 +73,8 @@
       if (typeof parsed.lineHeight === "number") base.lineHeight = parsed.lineHeight;
       if (typeof parsed.bodyFontId === "string") base.bodyFontId = parsed.bodyFontId;
       if (typeof parsed.displayFontId === "string") base.displayFontId = parsed.displayFontId;
-      if (parsed.hierarchy && typeof parsed.hierarchy === "object") {
-        base.hierarchy.strongH2 = !!parsed.hierarchy.strongH2;
-        base.hierarchy.openSections = !!parsed.hierarchy.openSections;
-        base.hierarchy.spaciousLists = !!parsed.hierarchy.spaciousLists;
-        base.hierarchy.largeLinkTitles = !!parsed.hierarchy.largeLinkTitles;
+      if (typeof parsed.typeScale === "string" && TYPE_SCALES.indexOf(parsed.typeScale) !== -1) {
+        base.typeScale = parsed.typeScale;
       }
       return base;
     } catch (e) {
@@ -94,8 +89,8 @@
         JSON.stringify({
           bodyFontId: state.bodyFontId,
           displayFontId: state.displayFontId,
+          typeScale: state.typeScale,
           lineHeight: state.lineHeight,
-          hierarchy: state.hierarchy,
         })
       );
     } catch (e) {}
@@ -179,13 +174,10 @@
     document.documentElement.style.setProperty("--theme-line-height", String(state.lineHeight));
   }
 
-  function applyHierarchy(state) {
-    var h = state.hierarchy;
-    var root = document.documentElement;
-    root.toggleAttribute("data-theme-strong-h2", h.strongH2);
-    root.toggleAttribute("data-theme-open-sections", h.openSections);
-    root.toggleAttribute("data-theme-spacious-lists", h.spaciousLists);
-    root.toggleAttribute("data-theme-large-link-titles", h.largeLinkTitles);
+  function applyTypeScale(state) {
+    var id = state.typeScale;
+    if (TYPE_SCALES.indexOf(id) === -1) id = "balanced";
+    document.documentElement.setAttribute("data-theme-type-scale", id);
   }
 
   function populateSelect(select) {
@@ -205,7 +197,9 @@
     var displaySel = document.getElementById("theme-font-display");
     var lhRange = document.getElementById("theme-line-height");
     var lhOut = document.getElementById("theme-line-height-value");
-    if (!layout || !panel || !fab || !bodySel || !displaySel || !lhRange || !lhOut) return;
+    var typeScaleSel = document.getElementById("theme-type-scale");
+    var resetBtn = document.getElementById("theme-reset");
+    if (!layout || !panel || !fab || !bodySel || !displaySel || !lhRange || !lhOut || !typeScaleSel) return;
 
     populateSelect(bodySel);
     populateSelect(displaySel);
@@ -216,22 +210,12 @@
     displaySel.value = state.displayFontId;
     lhRange.value = String(state.lineHeight);
     lhOut.textContent = state.lineHeight.toFixed(2);
-
-    var toggles = {
-      strongH2: document.getElementById("theme-h-strong-h2"),
-      openSections: document.getElementById("theme-h-open-sections"),
-      spaciousLists: document.getElementById("theme-h-spacious-lists"),
-      largeLinkTitles: document.getElementById("theme-h-large-link-titles"),
-    };
-
-    for (var key in toggles) {
-      if (toggles[key]) toggles[key].checked = !!state.hierarchy[key];
-    }
+    typeScaleSel.value = state.typeScale;
 
     function syncAll() {
       applyFonts(state);
       applyLineHeight(state);
-      applyHierarchy(state);
+      applyTypeScale(state);
       saveState(state);
     }
 
@@ -250,14 +234,6 @@
       setOpen(panel.hidden);
     });
 
-    var closeBtn = document.getElementById("theme-panel-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", function () {
-        setOpen(false);
-        fab.focus();
-      });
-    }
-
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && !panel.hidden) {
         setOpen(false);
@@ -275,6 +251,12 @@
       syncAll();
     });
 
+    typeScaleSel.addEventListener("change", function () {
+      state.typeScale = typeScaleSel.value;
+      applyTypeScale(state);
+      saveState(state);
+    });
+
     lhRange.addEventListener("input", function () {
       state.lineHeight = parseFloat(lhRange.value);
       lhOut.textContent = state.lineHeight.toFixed(2);
@@ -282,15 +264,25 @@
       saveState(state);
     });
 
-    for (var k in toggles) {
-      if (!toggles[k]) continue;
-      (function (key) {
-        toggles[key].addEventListener("change", function () {
-          state.hierarchy[key] = toggles[key].checked;
-          applyHierarchy(state);
-          saveState(state);
-        });
-      })(k);
+    function pushStateToControls() {
+      bodySel.value = state.bodyFontId;
+      displaySel.value = state.displayFontId;
+      lhRange.value = String(state.lineHeight);
+      lhOut.textContent = state.lineHeight.toFixed(2);
+      typeScaleSel.value = state.typeScale;
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        var wasOpen = state.open;
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch (e) {}
+        state = defaultState();
+        state.open = wasOpen;
+        pushStateToControls();
+        syncAll();
+      });
     }
   }
 
