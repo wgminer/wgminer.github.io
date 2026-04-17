@@ -37,8 +37,18 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   </head>
-  <body>
+  <body class="has-site-playfield">
     <a href="#main" class="skip-link">Skip to main content</a>
+    <div id="site-playfield" class="site-playfield">
+      <div class="site-playfield__stage">
+        <canvas
+          id="site-game-canvas"
+          class="site-playfield__canvas"
+          role="application"
+          aria-label="Ambient car track game in the background."
+        ></canvas>
+      </div>
+    </div>
     <div class="theme-layout">
       <div class="theme-layout__preview">
     <main id="main">
@@ -127,13 +137,12 @@
         <ul class="link-list">
             <li>
               <div class="item__title">
-                <a href="./bucket-game.html">Bucket Lines</a>
+                <a href="./bucket-game.html">Neon Track (fullscreen)</a>
               </div>
               <div class="item__description">
-                <p>A small physics playground that runs fullscreen on this site.</p>
                 <p>
-                  Balls drop from a fixed spout on a timer; you sketch ramps to steer them into the bucket and clear
-                  each level's catch quota. Lines stay where you place them, with a live preview while you drag.
+                  Drive a small car around an oval track in the page background.
+                  Open the fullscreen version for steering controls and lap timing.
                 </p>
               </div>
             </li>
@@ -143,11 +152,6 @@
               </div>
               <div class="item__description">
                 <p>Notes and photos from my garden.</p>
-                <p>
-                  I started it as a place to remember what I planted where, what actually survived the heat and the
-                  deer, and what I would do differently next season. It is part diary and part reference for myself,
-                  with enough pictures that I can scroll back and see how a bed has changed year to year.
-                </p>
               </div>
             </li>
             <li>
@@ -156,11 +160,6 @@
               </div>
               <div class="item__description">
                 <p>A simple, elegant way to view the time across multiple time zones.</p>
-                <p>
-                  I built it for the small daily headache of coordinating across cities without opening a calendar app
-                  or a noisy world-clock widget. You pick the places that matter, see them at a glance, and tweak the
-                  layout when your team or your travel plans shift.
-                </p>
               </div>
             </li>
             <li>
@@ -169,11 +168,6 @@
               </div>
               <div class="item__description">
                 <p>An LLM-based text transformer for proofreading and text improvement.</p>
-                <p>
-                  It is an experiment in how far you can push a single text box: paste rough copy, ask for a tighter
-                  tone or clearer structure, and iterate in place instead of bouncing between tabs. I use it as a
-                  scratchpad when I want a second pass on email, talks, or long Slack threads before I send them.
-                </p>
               </div>
             </li>
             <li>
@@ -182,11 +176,6 @@
               </div>
               <div class="item__description">
                 <p>Ambient recordings I've collected over the years.</p>
-                <p>
-                  Most of these are ordinary places—a river after work, rain on a porch, a city square at night—captured
-                  on walks and trips when I remembered to hit record. I keep the site as a quiet listening archive for
-                  headphones, and a reminder of how much texture there is in background noise once you stop tuning it out.
-                </p>
               </div>
             </li>
         </ul>
@@ -268,6 +257,7 @@
     </button>
 
     <script src="./scripts/theme-panel.js" defer></script>
+    <script src="./scripts/bucket-lines-game.js" defer></script>
     <script>
       (function () {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

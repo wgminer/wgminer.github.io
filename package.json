@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "live-server --port=8000 --open=index.html"
+    "dev": "live-server --port=8000 --open=index.html",
+    "branch:feature": "bash ./scripts/new-feature-branch.sh"
   },
   "author": "",
   "license": "ISC",

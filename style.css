@@ -521,3 +521,66 @@ body.theme-panel-open .theme-panel {
     max-height: 54vh;
   }
 }
+
+/* —— Homepage ambient car track canvas —— */
+
+.site-playfield {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: auto;
+}
+
+.site-playfield__stage {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+}
+
+.site-playfield__canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: default;
+}
+
+body.has-site-playfield .theme-layout {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+body.has-site-playfield #main,
+body.has-site-playfield aside.theme-panel,
+body.has-site-playfield .theme-fab {
+  pointer-events: auto;
+}
+
+body.has-site-playfield.theme-panel-open .theme-layout__preview {
+  pointer-events: auto;
+}
+
+body.has-site-playfield #main {
+  /* Keep text readable while allowing full game visibility underneath. */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0 14px 14px 0;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  body.has-site-playfield #main {
+    border-radius: 12px;
+  }
+
+  .site-playfield {
+    width: clamp(120px, 32vw, 220px);
+  }
+}

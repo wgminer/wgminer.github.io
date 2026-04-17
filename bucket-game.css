@@ -92,7 +92,7 @@
   width: 100%;
   height: 100%;
   touch-action: none;
-  cursor: crosshair;
+  cursor: default;
 }
 
 .bucket-game__hud {
