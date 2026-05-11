@@ -19,10 +19,7 @@
     />
     <meta property="og:url" content="https://williamminer.com/" />
     <meta property="og:image" content="https://williamminer.com/img/side.jpg" />
-    <meta
-      property="og:image:alt"
-      content="Portrait of designer and product leader Will Miner"
-    />
+    <meta property="og:image:alt" content="Portrait of designer and product leader Will Miner" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Will Miner · Designer &amp; Product Leader" />
     <meta
@@ -31,124 +28,181 @@
     />
     <meta name="twitter:image" content="https://williamminer.com/img/side.jpg" />
     <meta name="twitter:site" content="@wgminer" />
-    <meta name="theme-color" content="#f6f6f8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   </head>
-  <body class="has-site-playfield">
+  <body>
     <a href="#main" class="skip-link">Skip to main content</a>
-    <div id="site-playfield" class="site-playfield">
-      <div class="site-playfield__stage">
-        <canvas
-          id="site-game-canvas"
-          class="site-playfield__canvas"
-          role="application"
-          aria-label="Ambient car track game in the background."
-        ></canvas>
-      </div>
-    </div>
-    <div class="theme-layout">
-      <div class="theme-layout__preview">
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+      <svg
+        class="theme-toggle__icon theme-toggle__icon--sun"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2" />
+        <path d="M12 20v2" />
+        <path d="m4.93 4.93 1.41 1.41" />
+        <path d="m17.66 17.66 1.41 1.41" />
+        <path d="M2 12h2" />
+        <path d="M20 12h2" />
+        <path d="m6.34 17.66-1.41 1.41" />
+        <path d="m19.07 4.93-1.41 1.41" />
+      </svg>
+      <svg
+        class="theme-toggle__icon theme-toggle__icon--moon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
     <main id="main">
-    <article>
-      <h1>Will Miner</h1>
-      <section>
-        <p>
-          Hi, I'm Will Miner. I lead product design at
-          <a href="https://slack.com/">Slack</a>, where my team works on platform, AI, and the tools that help people and agents get work done together. Over
-          <a href="https://www.linkedin.com/in/williamminer/">fifteen years</a>
-          I've led design and product teams at
-          <a href="https://slack.com/">Slack</a>, 2U, and Intel, moving through EdTech, semiconductors, and enterprise software along the way.
-        </p>
+      <article>
+        <h1>Will Miner</h1>
+        <section>
+          <p>
+            Hi, I'm Will Miner. I lead product design at
+            <a href="https://slack.com/">Slack</a>, where my team works on platform, AI, and the
+            tools that help people and agents get work done together. Over
+            <a href="https://www.linkedin.com/in/williamminer/">fifteen years</a>
+            I've led design and product teams at
+            <a href="https://slack.com/">Slack</a>, 2U, and Intel, moving through EdTech,
+            semiconductors, and enterprise software along the way.
+          </p>
 
-        <p>
-          I've spent a lot of time thinking about
-          <a href="https://www.uxcon.io/">where design adds real value to a business</a>
-           That's part of why
-          <a href="https://slack.design/articles/mid-level-product-designer-design-mba-hey-slack-design/">I got an MBA</a>
-          while working full-time, and why I keep coming back to questions about
-          <a href="https://designsystems.nyc/2017-march/">craft</a>, leadership, and
-          <a href="https://archive.leadingdesign.com/conferences/london-2024/speakers/will-miner">what it takes to build a team that can sustain good work</a>.
-        </p>
+          <p>
+            I've spent a lot of time thinking about
+            <a href="https://www.uxcon.io/">where design adds real value to a business</a>. That's
+            part of why
+            <a
+              href="https://slack.design/articles/mid-level-product-designer-design-mba-hey-slack-design/"
+              >I got an MBA</a
+            >
+            while working full-time, and why I keep coming back to questions about
+            <a href="https://designsystems.nyc/2017-march/">craft</a>, leadership, and
+            <a href="https://archive.leadingdesign.com/conferences/london-2024/speakers/will-miner"
+              >what it takes to build a team that can sustain good work</a
+            >.
+          </p>
 
-        <p>
-          Outside of work I fly fish, tend a garden, build software for fun, and think maybe too hard about where technology is actually going.
-        </p>
-        <p class="contact-links">
-          <a href="https://www.linkedin.com/in/williamminer/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
-          <a href="https://github.com/wgminer" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in new tab)</span></a>
-        </p>
-      </section>
+          <p class="contact-links">
+            <a
+              href="https://www.linkedin.com/in/williamminer/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn<span class="sr-only"> (opens in new tab)</span></a
+            >
+            <a href="https://github.com/wgminer" target="_blank" rel="noopener noreferrer"
+              >GitHub<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </p>
+        </section>
 
-      <section>
-        <h2>Work</h2>
-        <ul class="link-list work-list">
-          <li>
-            <span class="work-list__logo-frame">
-              <img class="work-list__logo work-list__logo--slack" src="./img/logos/slack.svg" alt="" />
-            </span>
-            <div class="work-list__body">
-              <div class="work-list__headline">
-                <a class="item__title work-list__company" href="https://slack.com/">Slack</a>
-                <span class="item__date">2021 – present</span>
-              </div>
-              <ul class="work-list__roles">
-                <li>VP, Product Design</li>
-                <li>Director, Product Design</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <span class="work-list__logo-frame">
-              <img class="work-list__logo work-list__logo--2u" src="./img/logos/2u.svg" alt="" />
-            </span>
-            <div class="work-list__body">
-              <div class="work-list__headline">
-                <span class="item__title work-list__company">2U</span>
-                <span class="item__date">2014 - 2021</span>
-              </div>
-              <ul class="work-list__roles">
-                <li>VP, General Manager</li>
-                <li>Head of User Experience</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <span class="work-list__logo-frame">
-              <img class="work-list__logo work-list__logo--intel" src="./img/logos/intel.svg" alt="" />
-            </span>
-            <div class="work-list__body">
-              <div class="work-list__headline">
-                <span class="item__title work-list__company">Intel</span>
-                <span class="item__date">2011 - 2014</span>
-              </div>
-              <ul class="work-list__roles">
-                <li>Human Factors Engineer</li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Projects</h2>
-        <ul class="link-list">
+        <section>
+          <h2 class="work-list__heading">Work</h2>
+          <ul class="link-list work-list">
             <li>
-              <div class="item__title">
-                <a href="./bucket-game.html">Neon Track (fullscreen)</a>
-              </div>
-              <div class="item__description">
-                <p>
-                  Drive a small car around an oval track in the page background.
-                  Open the fullscreen version for steering controls and lap timing.
-                </p>
+              <span class="work-list__logo-frame">
+                <img
+                  class="work-list__logo work-list__logo--slack"
+                  src="./img/logos/slack.svg"
+                  alt=""
+                />
+              </span>
+              <div class="work-list__body">
+                <div class="work-list__headline">
+                  <a class="item__title work-list__company" href="https://slack.com/">Slack</a>
+                  <span class="item__date">2021 – present</span>
+                </div>
+                <ul class="work-list__roles">
+                  <li>VP, Product Design</li>
+                  <li>Director, Product Design</li>
+                </ul>
               </div>
             </li>
             <li>
+              <span class="work-list__logo-frame">
+                <img class="work-list__logo work-list__logo--2u" src="./img/logos/2u.svg" alt="" />
+              </span>
+              <div class="work-list__body">
+                <div class="work-list__headline">
+                  <a class="item__title work-list__company" href="https://2u.com/">2U</a>
+                  <span class="item__date">2014 - 2021</span>
+                </div>
+                <ul class="work-list__roles">
+                  <li>VP, General Manager</li>
+                  <li>Head of User Experience</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <span class="work-list__logo-frame">
+                <img
+                  class="work-list__logo work-list__logo--intel"
+                  src="./img/logos/intel.svg"
+                  alt=""
+                />
+              </span>
+              <div class="work-list__body">
+                <div class="work-list__headline">
+                  <a class="item__title work-list__company" href="https://www.intel.com/">Intel</a>
+                  <span class="item__date">2011 - 2014</span>
+                </div>
+                <ul class="work-list__roles">
+                  <li>Human Factors Engineer</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Projects</h2>
+          <ul class="link-list">
+            <li>
               <div class="item__title">
-                <a target="_blank" href="https://wgminer.github.io/garden-blog/" rel="noopener noreferrer">Garden Blog<span class="sr-only"> (opens in new tab)</span></a>
+                <a
+                  target="_blank"
+                  href="https://wgminer.github.io/garden-blog/"
+                  rel="noopener noreferrer"
+                  >Garden Blog<span class="sr-only"> (opens in new tab)</span></a
+                >
               </div>
               <div class="item__description">
                 <p>Notes and photos from my garden.</p>
@@ -156,7 +210,12 @@
             </li>
             <li>
               <div class="item__title">
-                <a target="_blank" href="https://williamminer.com/world-clock?zones=NYC+BER+HNL+SEA" rel="noopener noreferrer">World Clock<span class="sr-only"> (opens in new tab)</span></a>
+                <a
+                  target="_blank"
+                  href="https://williamminer.com/world-clock?zones=NYC+BER+HNL+SEA"
+                  rel="noopener noreferrer"
+                  >World Clock<span class="sr-only"> (opens in new tab)</span></a
+                >
               </div>
               <div class="item__description">
                 <p>A simple, elegant way to view the time across multiple time zones.</p>
@@ -164,7 +223,9 @@
             </li>
             <li>
               <div class="item__title">
-                <a target="_blank" href="https://cuneiform-88b0a.web.app/" rel="noopener noreferrer">WordCalc<span class="sr-only"> (opens in new tab)</span></a>
+                <a target="_blank" href="https://cuneiform-88b0a.web.app/" rel="noopener noreferrer"
+                  >WordCalc<span class="sr-only"> (opens in new tab)</span></a
+                >
               </div>
               <div class="item__description">
                 <p>An LLM-based text transformer for proofreading and text improvement.</p>
@@ -172,92 +233,237 @@
             </li>
             <li>
               <div class="item__title">
-                <a target="_blank" href="https://wgminer.github.io/sounds/" rel="noopener noreferrer">Sounds<span class="sr-only"> (opens in new tab)</span></a>
+                <a
+                  target="_blank"
+                  href="https://wgminer.github.io/sounds/"
+                  rel="noopener noreferrer"
+                  >Sounds<span class="sr-only"> (opens in new tab)</span></a
+                >
               </div>
               <div class="item__description">
                 <p>Ambient recordings I've collected over the years.</p>
               </div>
             </li>
-        </ul>
-      </section>
-    </article>
-    </main>
-      </div>
+          </ul>
+        </section>
 
-      <aside
-        class="theme-panel"
-        id="theme-panel"
-        role="complementary"
-        aria-label="Typography and layout"
-        hidden
-      >
-        <div class="theme-panel__scroll">
-          <section class="theme-panel__section">
-            <p class="theme-panel__hint">Main heading (H1).</p>
-            <h3 class="theme-panel__label">Title font</h3>
-            <label class="theme-panel__sr" for="theme-font-display">Title font</label>
-            <select class="theme-panel__select" id="theme-font-display" size="6"></select>
-          </section>
-
-          <section class="theme-panel__section">
-            <p class="theme-panel__hint">Paragraphs, lists, and UI.</p>
-            <h3 class="theme-panel__label">Body font</h3>
-            <label class="theme-panel__sr" for="theme-font-body">Body font</label>
-            <select class="theme-panel__select" id="theme-font-body" size="6"></select>
-          </section>
-
-          <section class="theme-panel__section">
-            <p class="theme-panel__hint">Base size and heading steps together.</p>
-            <h3 class="theme-panel__label">Type scale</h3>
-            <label class="theme-panel__sr" for="theme-type-scale">Type scale</label>
-            <select class="theme-panel__select" id="theme-type-scale">
-              <option value="compact">Compact — smaller body, tighter headings</option>
-              <option value="balanced">Balanced — default rhythm</option>
-              <option value="comfortable">Comfortable — a bit more room</option>
-              <option value="generous">Generous — largest type</option>
-            </select>
-          </section>
-
-          <section class="theme-panel__section">
-            <h3 class="theme-panel__label">Line height</h3>
-            <div class="theme-panel__slider-row">
-              <label class="theme-panel__sr" for="theme-line-height">Line height</label>
-              <input
-                type="range"
-                id="theme-line-height"
-                class="theme-panel__range"
-                min="1.35"
-                max="1.9"
-                step="0.05"
-                value="1.5"
+        <section aria-labelledby="bookmarks-heading">
+          <h2 id="bookmarks-heading">Bookmarks</h2>
+          <!-- START HOME BOOKMARKS -->
+          <ul class="link-list">
+            <li class="bookmark-home__item bookmark-home__item--thumb bookmark-home__item--article">
+              <img
+                class="bookmark-home__thumb"
+                src="https://kellblog.com/wp-content/uploads/2015/03/level.png?w=500"
+                alt=""
+                loading="lazy"
+                decoding="async"
               />
-              <output class="theme-panel__range-value" id="theme-line-height-value" for="theme-line-height"
-                >1.50</output>
-            </div>
-          </section>
+              <div class="bookmark-home__main">
+                <div class="item__title">
+                  <a
+                    target="_blank"
+                    href="https://kellblog.com/2015/03/08/career-development-what-it-really-means-to-be-a-manager-director-or-vp/"
+                    rel="noopener noreferrer"
+                    >Career Development: What It Really Means to be a Manager, Director, or VP<span
+                      class="sr-only"
+                    >
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </div>
+                <div class="item__description bookmark-home__article-meta">
+                  <p class="bookmark-home__domain">kellblog.com</p>
+                </div>
+              </div>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--thumb">
+              <img
+                class="bookmark-home__thumb"
+                src="https://rdl.ink/render/https%3A%2F%2Fwww.jofreeman.com%2Fjoreen%2Ftyranny.htm"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="bookmark-home__main">
+                <div class="item__title">
+                  <a
+                    target="_blank"
+                    href="https://www.jofreeman.com/joreen/tyranny.htm"
+                    rel="noopener noreferrer"
+                    >The Tyranny of Stuctureless<span class="sr-only"> (opens in new tab)</span></a
+                  >
+                </div>
+                <div class="item__description">
+                  <p>The Tyranny of Stuctureless by Jo Freeman</p>
+                </div>
+              </div>
+            </li>
+            <li class="bookmark-home__item">
+              <div class="item__title">
+                <a target="_blank" href="chrome://newtab/" rel="noopener noreferrer"
+                  >New Tab<span class="sr-only"> (opens in new tab)</span></a
+                >
+              </div>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--thumb">
+              <img
+                class="bookmark-home__thumb"
+                src="https://johntreed.com/cdn/shop/products/APRcoverNEW_medium.jpg?v=1627076026"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="bookmark-home__main">
+                <div class="item__title">
+                  <a
+                    target="_blank"
+                    href="https://johntreed.com/collections/real-estate-investment/products/an-american-principal-residence-is-the-most-advantaged-investment-on-earth-maximize-yours"
+                    rel="noopener noreferrer"
+                    >An American Principal Residence is the Most Advantaged Investment on Earth:
+                    Maximize Yours<span class="sr-only"> (opens in new tab)</span></a
+                  >
+                </div>
+                <div class="item__description">
+                  <p>
+                    Don’t make the mistake I made of assuming real real state investors buy larger
+                    rental properties like apartment buildings and office buildings. After 54 years
+                    in the business, I figured out that “There’s no place like…
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--thumb bookmark-home__item--article">
+              <img
+                class="bookmark-home__thumb"
+                src="https://admin.itsnicethat.com/images/83ikvgNnBmovI1qAo51OqI4q6FQ=/257923/width-1440%7Cformat-jpeg/16x9-Kerning.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="bookmark-home__main">
+                <div class="item__title">
+                  <a
+                    target="_blank"
+                    href="https://www.itsnicethat.com/features/perfectionism-creative-industry-171024?utm_content=buffer8bead&amp;utm_medium=social&amp;utm_source=twitter&amp;utm_campaign=intsocial"
+                    rel="noopener noreferrer"
+                    >When perfectionism makes you a better creative, and when it doesn’t<span
+                      class="sr-only"
+                    >
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </div>
+                <div class="item__description bookmark-home__article-meta">
+                  <p class="bookmark-home__domain">itsnicethat.com</p>
+                </div>
+              </div>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--figure">
+              <a
+                class="bookmark-home__figure-link"
+                target="_blank"
+                href="https://i.pinimg.com/564x/5a/4a/f9/5a4af90871630f7b3ffd67cd6897fff3.jpg"
+                rel="noopener noreferrer"
+                aria-label="996 4S (opens in new tab)"
+              >
+                <img
+                  class="bookmark-home__figure-img"
+                  src="https://i.pinimg.com/564x/5a/4a/f9/5a4af90871630f7b3ffd67cd6897fff3.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--figure">
+              <a
+                class="bookmark-home__figure-link"
+                target="_blank"
+                href="https://juddfurniture.wpenginepowered.com/wp-content/uploads/8ft-Bench-11-1600x1033.jpg"
+                rel="noopener noreferrer"
+                aria-label="8ft-Bench-11-1600x1033.jpg (1600×1033) (opens in new tab)"
+              >
+                <img
+                  class="bookmark-home__figure-img"
+                  src="https://juddfurniture.wpenginepowered.com/wp-content/uploads/8ft-Bench-11-1600x1033.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--figure">
+              <a
+                class="bookmark-home__figure-link"
+                target="_blank"
+                href="https://juddfurniture.wpenginepowered.com/wp-content/uploads/The-Block.jpg"
+                rel="noopener noreferrer"
+                aria-label="Donald Judd - The block (opens in new tab)"
+              >
+                <img
+                  class="bookmark-home__figure-img"
+                  src="https://juddfurniture.wpenginepowered.com/wp-content/uploads/The-Block.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--thumb">
+              <img
+                class="bookmark-home__thumb"
+                src="https://i.ytimg.com/vi/WxthhVxnNYA/maxresdefault.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="bookmark-home__main">
+                <div class="item__title">
+                  <a
+                    target="_blank"
+                    href="https://www.youtube.com/watch?v=WxthhVxnNYA"
+                    rel="noopener noreferrer"
+                    >7 Methods Of Plywood Corner Joinery | How To Join Plywood In A Corner<span
+                      class="sr-only"
+                    >
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </div>
+                <div class="item__description">
+                  <p>
+                    In this video I discuss the 7 most common ways of joinery 2 pieces of plywood
+                    together in a corner. Some are easy and quick while others take a little more
+                    t...
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="bookmark-home__item bookmark-home__item--figure">
+              <a
+                class="bookmark-home__figure-link"
+                target="_blank"
+                href="https://live.staticflickr.com/2807/34287983465_c05a4ec5a6.jpg"
+                rel="noopener noreferrer"
+                aria-label="34287983465 c05a4ec5a6 (opens in new tab)"
+              >
+                <img
+                  class="bookmark-home__figure-img"
+                  src="https://live.staticflickr.com/2807/34287983465_c05a4ec5a6.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </li>
+          </ul>
+          <p class="bookmark-home__more"><a href="./bookmarks/">Show more</a></p>
+          <!-- END HOME BOOKMARKS -->
+        </section>
+      </article>
+    </main>
 
-          <div class="theme-panel__footer">
-            <button type="button" class="theme-panel__reset" id="theme-reset">
-              Reset to defaults
-            </button>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <button
-      type="button"
-      class="theme-fab"
-      id="theme-panel-toggle"
-      aria-controls="theme-panel"
-      aria-expanded="false"
-    >
-      <span aria-hidden="true">Aa</span>
-      <span class="theme-fab__label">Theme</span>
-    </button>
-
-    <script src="./scripts/theme-panel.js" defer></script>
-    <script src="./scripts/bucket-lines-game.js" defer></script>
     <script>
       (function () {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -271,6 +477,29 @@
             img.addEventListener("load", reveal, { once: true });
             img.addEventListener("error", reveal, { once: true });
           }
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var btn = document.querySelector("[data-theme-toggle]");
+        if (!btn) return;
+        var root = document.documentElement;
+        function syncLabel() {
+          var current = root.getAttribute("data-theme");
+          btn.setAttribute(
+            "aria-label",
+            current === "light" ? "Switch to dark mode" : "Switch to light mode",
+          );
+        }
+        syncLabel();
+        btn.addEventListener("click", function () {
+          var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+          root.setAttribute("data-theme", next);
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          syncLabel();
         });
       })();
     </script>

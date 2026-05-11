@@ -1,0 +1,39 @@
+# Requires repository secret RAINDROP_TOKEN (Raindrop App → Test token).
+# Actions → Sync Raindrop bookmarks → Run workflow.
+name: Sync Raindrop bookmarks
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build bookmark HTML from Raindrop
+        env:
+          RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
+        run: npm run build:bookmarks
+
+      - name: Commit and push if HTML changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bookmarks/index.html index.html
+          if git diff --staged --quiet; then
+            echo "No changes to bookmark HTML."
+          else
+            git commit -m "Sync bookmarks from Raindrop"
+            git push
+          fi
