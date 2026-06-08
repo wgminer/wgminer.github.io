@@ -2,25 +2,28 @@
 
 /* Color palette – single source of truth */
 :root {
-  --bg: #f6f6f8;
-  --text: #1c1c1e;
-  --text-muted: #4a4a4e;
-  --text-subtle: #8e8e93;
-  /* Links: electric / neon cyan-blue (still ≥4.5:1 on light gray) */
-  --link: #0090e8;
-  --link-visited: #0068b3;
-  --link-hover: #00b4ff;
-  --accent: #0090e8;
-  --accent-hover: #00b4ff;
-  --border: #d1d1d6;
-  --border-light: #e5e5ea;
-  --surface: #ebebef;
-  --surface-hover: #e0e0e5;
-  --hr: #d1d1d6;
+  --bg: #f2f4fa;
+  --text: #3a3d4a;
+  --text-muted: #565a68;
+  --text-subtle: #7a7f8f;
+  /* Links: International Klein Blue (≥4.5:1 on light gray) */
+  --link: #002fa7;
+  --link-visited: #002285;
+  --link-hover: #003dcc;
+  --accent: #002fa7;
+  --accent-hover: #003dcc;
+  --border: #c8cdd9;
+  --border-light: #dce0ea;
+  --surface: #e6eaf3;
+  --surface-hover: #d8deeb;
+  --hr: #c8cdd9;
   --danger: #b91c1c;
-  --code-bg: rgba(0, 0, 0, 0.055);
-  --selection-bg: #7ddcff;
-  --selection-text: #0c1929;
+  --code-bg: rgba(0, 47, 167, 0.06);
+  --selection-bg: #b8c4f0;
+  --selection-text: #000b3d;
+  --font-serif: "Newsreader", Palatino, "Palatino Linotype", Georgia, serif;
+  --weight-body: 350;
+  --weight-heading: 425;
   color-scheme: light;
 }
 
@@ -36,8 +39,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 12.5%;
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
-    Georgia, serif;
+  font-family: var(--font-serif);
+  font-weight: var(--weight-body);
+  font-optical-sizing: auto;
   color: var(--text);
   max-width: 1200px;
   counter-reset: sidenote-counter;
@@ -85,7 +89,7 @@ section {
 
 
 h1 {
-  font-weight: 400;
+  font-weight: var(--weight-heading);
   margin-top: 4rem;
   margin-bottom: 1.5rem;
   font-size: 3.2rem;
@@ -94,7 +98,7 @@ h1 {
 
 h2 {
   font-style: italic;
-  font-weight: 400;
+  font-weight: var(--weight-heading);
   margin-top: 2.1rem;
   margin-bottom: 1.4rem;
   font-size: 2.2rem;
@@ -103,7 +107,7 @@ h2 {
 
 h3 {
   font-style: italic;
-  font-weight: 400;
+  font-weight: var(--weight-heading);
   font-size: 1.7rem;
   margin-top: 2rem;
   margin-bottom: 1.4rem;
@@ -122,6 +126,7 @@ hr {
 
 p.subtitle {
   font-style: italic;
+  font-weight: var(--weight-body);
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1.8rem;
@@ -255,20 +260,15 @@ ul {
 /* Links (skip-link is a separate control surface) */
 a:not(.skip-link):link {
   color: var(--link);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
-  text-underline-offset: 0.2em;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
 }
 
 a:not(.skip-link):visited {
   color: var(--link-visited);
-  text-decoration-color: color-mix(in srgb, var(--link-visited) 35%, transparent);
 }
 
 a:not(.skip-link):hover {
   color: var(--link-hover);
-  text-decoration-color: currentColor;
 }
 
 a:not(.skip-link):focus {
@@ -436,10 +436,6 @@ ul.link-list > li {
   margin-bottom: 1rem;
 }
 
-ul.link-list .item__title a:hover {
-  text-decoration: underline;
-}
-
 .item__title {
   padding-left: 0.5rem;
 }
@@ -455,19 +451,18 @@ ul.link-list .item__title a:hover {
 .more-link {
   margin-top: 0.5rem;
   margin-bottom: 0;
+  padding-left: 1.5rem;
   font-size: 1.1rem;
 }
 
 .more-link a:link,
 .more-link a:visited {
-  color: var(--text-subtle);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--text-subtle) 40%, transparent);
+  color: color-mix(in srgb, var(--text-subtle) 70%, transparent);
+  text-decoration: none;
 }
 
 .more-link a:hover {
-  color: var(--text-muted);
-  text-decoration-color: currentColor;
+  color: var(--text-subtle);
 }
 
 .contact-links a + a {
@@ -480,25 +475,25 @@ ul.link-list .item__title a:hover {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f0f12;
-    --text: #f2f2f7;
-    --text-muted: #b4b4bd;
-    --text-subtle: #9898a0;
-    /* Neon cyan-blue on dark */
-    --link: #2de1ff;
-    --link-visited: #7aebff;
-    --link-hover: #b6f6ff;
-    --accent: #2de1ff;
-    --accent-hover: #7aebff;
-    --border: #3d3d42;
-    --border-light: #2e2e33;
-    --surface: #1a1a1f;
-    --surface-hover: #27272c;
-    --hr: #3d3d42;
+    --bg: #0c0e16;
+    --text: #d4d8e8;
+    --text-muted: #a4aac0;
+    --text-subtle: #8088a0;
+    /* IKB family, lifted for dark backgrounds */
+    --link: #6b7fff;
+    --link-visited: #9aa6ff;
+    --link-hover: #c4cbff;
+    --accent: #6b7fff;
+    --accent-hover: #c4cbff;
+    --border: #343a50;
+    --border-light: #252a3c;
+    --surface: #161a28;
+    --surface-hover: #1f2436;
+    --hr: #343a50;
     --danger: #fca5a5;
-    --code-bg: rgba(255, 255, 255, 0.075);
-    --selection-bg: #004e6b;
-    --selection-text: #e6fcff;
+    --code-bg: rgba(107, 127, 255, 0.1);
+    --selection-bg: #2a3280;
+    --selection-text: #eef0ff;
     color-scheme: dark;
   }
 
