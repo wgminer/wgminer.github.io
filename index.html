@@ -37,10 +37,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=block"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <style>
+      html {
+        background: #f2f4fa;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        html {
+          background: #0c0e16;
+          color-scheme: dark;
+        }
+      }
+      html.is-loading main {
+        opacity: 0;
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add("is-loading");
+    </script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   </head>
   <body>
@@ -211,5 +229,29 @@
       </section>
     </article>
     </main>
+    <script>
+      (function () {
+        var root = document.documentElement;
+
+        function reveal() {
+          if (!root.classList.contains("is-loading")) return;
+          root.classList.remove("is-loading");
+          root.classList.add("is-loaded");
+        }
+
+        Promise.all([
+          document.fonts ? document.fonts.ready : Promise.resolve(),
+          new Promise(function (resolve) {
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", resolve, { once: true });
+            } else {
+              resolve();
+            }
+          }),
+        ]).then(reveal);
+
+        setTimeout(reveal, 2500);
+      })();
+    </script>
   </body>
 </html>
