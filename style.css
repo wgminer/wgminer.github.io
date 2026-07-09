@@ -277,13 +277,13 @@ ul {
   padding-left: 1rem;
 }
 
-/* Links — soft wavy underline; rolls into a strikethrough on hover */
+/* Links — soft wavy underline that rolls on hover */
 a:not(.skip-link),
 a:not(.skip-link):visited {
   color: var(--link);
   text-decoration: none;
   padding-bottom: 0.15em;
-  transition: color 0.2s ease, background-position 0.25s ease;
+  transition: color 0.2s ease;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%23002fa7' stroke-opacity='0.35' stroke-width='1.35' stroke-linecap='round'/%3E%3C/svg%3E");
   background-size: 20px 5px;
   background-repeat: repeat-x;
@@ -294,7 +294,6 @@ a:not(.skip-link):hover,
 a:not(.skip-link):focus-visible {
   color: var(--link-hover);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%23003dcc' stroke-width='1.65' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-position: 0 50%;
   animation: link-wave 0.5s linear infinite;
 }
 
@@ -314,10 +313,10 @@ a:not(.skip-link):focus-visible {
 
 @keyframes link-wave {
   from {
-    background-position: 0 50%;
+    background-position: 0 100%;
   }
   to {
-    background-position: 20px 50%;
+    background-position: 20px 100%;
   }
 }
 
