@@ -1,14 +1,13 @@
 @charset "UTF-8";
 
-/* Color palette – single source of truth */
+/* Color palette – single source of truth
+   Light cool gray field + International Klein Blue links */
 :root {
-  --bg: #f2f4fa;
+  --bg: #eef1f6;
   --text: #3a3d4a;
   --text-muted: #565a68;
   --text-subtle: #7a7f8f;
-  /* Links: International Klein Blue (≥4.5:1 on light gray) */
   --link: #002fa7;
-  --link-visited: #002285;
   --link-hover: #003dcc;
   --accent: #002fa7;
   --accent-hover: #003dcc;
@@ -36,10 +35,20 @@ html {
 
 html.is-loaded main {
   opacity: 1;
-  transition: opacity 0.35s ease;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity 0.7s ease-out,
+    filter 0.9s ease-out,
+    transform 0.8s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html.is-loading main {
+    filter: none;
+    transform: none;
+  }
+
   html.is-loaded main {
     transition: none;
   }
@@ -268,24 +277,30 @@ ul {
   padding-left: 1rem;
 }
 
-/* Links (skip-link is a separate control surface) */
-a:not(.skip-link):link {
+/* Links — soft wavy underline; rolls into a strikethrough on hover */
+a:not(.skip-link),
+a:not(.skip-link):visited {
   color: var(--link);
   text-decoration: none;
+  padding-bottom: 0.15em;
+  transition: color 0.2s ease, background-position 0.25s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%23002fa7' stroke-opacity='0.35' stroke-width='1.35' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 20px 5px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
 }
 
-a:not(.skip-link):visited {
-  color: var(--link-visited);
-}
-
-a:not(.skip-link):hover {
+a:not(.skip-link):hover,
+a:not(.skip-link):focus-visible {
   color: var(--link-hover);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%23003dcc' stroke-width='1.65' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: 0 50%;
+  animation: link-wave 0.5s linear infinite;
 }
 
 a:not(.skip-link):focus {
   outline: 2px solid var(--link);
   outline-offset: 3px;
-  text-decoration: none;
 }
 
 a:not(.skip-link):focus:not(:focus-visible) {
@@ -295,7 +310,22 @@ a:not(.skip-link):focus:not(:focus-visible) {
 a:not(.skip-link):focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 3px;
-  text-decoration: none;
+}
+
+@keyframes link-wave {
+  from {
+    background-position: 0 50%;
+  }
+  to {
+    background-position: 20px 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a:not(.skip-link):hover,
+  a:not(.skip-link):focus-visible {
+    animation: none;
+  }
 }
 
 /* Sidenotes, margin notes, figures, captions */
@@ -443,17 +473,22 @@ label.margin-toggle:not(.sidenote-number) {
   height: 100%;
 }
 
+ul.link-list {
+  list-style: none;
+  padding-left: 0;
+}
+
 ul.link-list > li {
   margin-bottom: 1rem;
 }
 
 .item__title {
-  padding-left: 0.5rem;
+  padding-left: 0;
 }
 
 .item__description,
 .item__date {
-  padding-left: 0.5rem;
+  padding-left: 0;
   color: var(--text-muted);
   font-size: 0.75em;
   margin-top: -0.25rem;
@@ -462,18 +497,21 @@ ul.link-list > li {
 .more-link {
   margin-top: 0.5rem;
   margin-bottom: 0;
-  padding-left: 1.5rem;
+  padding-left: 0;
   font-size: 1.1rem;
 }
 
-.more-link a:link,
-.more-link a:visited {
+.more-link a {
   color: color-mix(in srgb, var(--text-subtle) 70%, transparent);
   text-decoration: none;
+  background-image: none;
 }
 
-.more-link a:hover {
+.more-link a:hover,
+.more-link a:focus-visible {
   color: var(--text-subtle);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%237a7f8f' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  animation: link-wave 0.5s linear infinite;
 }
 
 .contact-links a + a {
@@ -492,7 +530,6 @@ ul.link-list > li {
     --text-subtle: #8088a0;
     /* IKB family, lifted for dark backgrounds */
     --link: #6b7fff;
-    --link-visited: #9aa6ff;
     --link-hover: #c4cbff;
     --accent: #6b7fff;
     --accent-hover: #c4cbff;
@@ -506,6 +543,16 @@ ul.link-list > li {
     --selection-bg: #2a3280;
     --selection-text: #eef0ff;
     color-scheme: dark;
+  }
+
+  a:not(.skip-link),
+  a:not(.skip-link):visited {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%236b7fff' stroke-opacity='0.4' stroke-width='1.35' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  a:not(.skip-link):hover,
+  a:not(.skip-link):focus-visible {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='5' viewBox='0 0 20 5' fill='none'%3E%3Cpath d='M0 2.5c2.5 0 2.5-1.8 5-1.8s2.5 1.8 5 1.8 2.5-1.8 5-1.8 2.5 1.8 5 1.8' stroke='%23c4cbff' stroke-width='1.65' stroke-linecap='round'/%3E%3C/svg%3E");
   }
 
   img {
