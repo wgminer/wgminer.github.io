@@ -472,17 +472,34 @@ label.margin-toggle:not(.sidenote-number) {
   height: 100%;
 }
 
+/* Speaking + Projects rhythm:
+   line gap < title→description < item gap < section gap */
+section.list-section > h2 {
+  margin-top: 1.5rem;
+}
+
+section > ul.link-list {
+  width: 55%;
+}
+
 ul.link-list {
   list-style: none;
   padding-left: 0;
+  margin-bottom: 0;
 }
 
 ul.link-list > li {
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul.link-list > li + li {
+  margin-top: 2rem;
 }
 
 .item__title {
   padding-left: 0;
+  line-height: 1.2;
 }
 
 .item__description,
@@ -490,7 +507,10 @@ ul.link-list > li {
   padding-left: 0;
   color: var(--text-muted);
   font-size: 0.75em;
-  margin-top: -0.25rem;
+  line-height: 1.45;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  text-wrap: pretty;
 }
 
 .more-link {
@@ -582,6 +602,10 @@ ul.link-list > li {
   section > ol,
   section > ul {
     width: 90%;
+  }
+
+  section > ul.link-list {
+    width: 100%;
   }
 
   figure {
