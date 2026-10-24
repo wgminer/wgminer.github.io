@@ -1,12 +1,12 @@
-Interviewing for Product Design Roles: 7 Tips
+Hiring designers at Slack
 
-At Slack, we’re hiring again. That means I’m reviewing quite a few portfolios and sitting in on case study presentations. This is some of my favorite work because you get to see all the different ways designers approach and solve problems. And I don’t just mean the problem of designing a product. I also mean the “problem” of acquiring a new job.
+Lately I’ve been reviewing quite a few portfolios and sitting in on case study presentations. This is some of my favorite work because you get to see all the different ways designers approach and solve problems. And I don’t just mean the problem of designing a product. I also mean the “problem” of acquiring a new job.
 
 Over time, you start to notice patterns in what tends to resonate with hiring teams and what doesn’t. The designers who stand out are usually not just strong craft designers. They are practical builders who can move work forward, and collaborators who make teams better without needing to dominate the room. Below is a bit of a brain dump of things I consistently see working and not working in how designers present their work and apply to roles.
 
 Applying
 
-Referrals are king. I can’t emphasize this enough. Applying via a referral increases your chances of making it to the next round by 3 to 4x. When someone already at the company submits your application, recruiting and the hiring manager tend to take extra care in the review.
+Design your resume. I’m looking at the totality of how you present yourself: your website, the words you use, how you write your LinkedIn, and especially the visual design of your resume. Send it as a PDF and give it clean typography. It’s one of the easiest ways to show you actually know how to design something. Don’t miss that opportunity.
 
 You probably only need 2 to 3 projects in your portfolio. For a recent role at Slack, we received over 400 applications. Reviewers are moving quickly. I might spend 30 to 90 seconds on an initial pass. Depth matters more than volume.
 
