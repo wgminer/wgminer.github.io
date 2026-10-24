@@ -16,9 +16,11 @@ Personal site for Will Miner (williamminer.com), hosted on GitHub Pages. Plain s
 ## Development
 
 ```bash
-# Local server (Will runs this himself; ask him to test)
+# Local server with live reload on port 8000
 npm run dev
 ```
+
+In the Claude desktop app, start the `site` config from `.claude/launch.json` with `preview_start` and check changes in the Browser pane. Harness, World Clock, and Sounds 404 locally since they live in other repos.
 
 No build, lint, or test setup.
 
@@ -40,6 +42,6 @@ No build, lint, or test setup.
 
 ## Notes
 
-- Projects (Harness, World Clock, Sounds) live in separate repos served under the same domain, so they're linked with relative paths in the same tab
+- Projects (Harness, World Clock, Sounds) live in separate repos served under the same domain, so they're linked with relative paths in the same tab. WordCalc is hosted elsewhere and opens in a new tab.
 - `art-generator.js`, `experiments/`, `img/backgrounds/`, and the unused images in `img/` are leftovers not referenced by any page
 - `config.js` is gitignored and unused

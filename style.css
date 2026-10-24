@@ -497,9 +497,15 @@ ul.link-list > li + li {
   margin-top: 2rem;
 }
 
+/* Lists rely on color alone; the wave appears on hover */
+ul.link-list a:not(.skip-link):not(:hover):not(:focus-visible) {
+  background-image: none;
+}
+
 .item__title {
   padding-left: 0;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 .item__description,
