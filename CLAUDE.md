@@ -4,52 +4,42 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website for William Miner (williamminer.com), hosted on GitHub Pages. It's a simple static HTML/CSS/JS website with no build process or frameworks - just vanilla web technologies.
+Personal site for Will Miner (williamminer.com), hosted on GitHub Pages. Plain static HTML and CSS, no build process or frameworks.
 
 ## Architecture
 
-- **Frontend**: Vanilla HTML5, CSS, and JavaScript
-- **Styling**: Uses Tufte CSS for typography and custom CSS for layout and theming
-- **JavaScript**: Single `index.js` file handling location-based greetings and interactive elements
-- **Dependencies**: Minimal - only axios for potential API calls and fs (unused)
-- **Deployment**: Static files served directly via GitHub Pages
+- **Pages**: `index.html` (homepage) and one folder per blog post under `blog/` (e.g. `blog/hiring-at-slack/index.html`)
+- **Styling**: Single `style.css` shared by every page. Colors are CSS variables on `:root` with a dark-mode override. Type is Newsreader from Google Fonts.
+- **JavaScript**: Only a small inline script in `index.html` that reveals the page once fonts load (avoids layout shift)
+- **Deployment**: Static files served directly via GitHub Pages; custom domain set in `CNAME`
 
-## Development Commands
+## Development
 
 ```bash
-# Start local development server
+# Local server (Will runs this himself; ask him to test)
 npm run dev
-
-# No build process required - direct file editing
-# No linting or testing setup currently configured
 ```
+
+No build, lint, or test setup.
 
 ## Key Files
 
-- `index.html` - Main page structure and content
-- `index.js` - JavaScript functionality (location greetings, animations, dropdowns)
-- `style.css` - Custom styling and dark mode support
-- `tufte.css` - Typography framework
-- `config.js` - Contains API token (currently unused)
+- `index.html` - Homepage: intro, Speaking and writing, Projects
+- `blog/<slug>/index.html` - Published posts; `blog/<slug>.md` is the source draft
+- `style.css` - All styling, light and dark themes
+- `img/share/` - 1200x630 social share cards (`og:image` / `twitter:image`), one per page
+- `sitemap.xml`, `robots.txt` - Keep the sitemap updated when adding a post
 
-## Notable Features
+## Adding a blog post
 
-- **Location-based greetings**: JavaScript detects user's timezone/locale and shows appropriate greeting
-- **Interactive elements**: Collapsible sections for coaching services
-- **Responsive design**: Works across devices
-- **Dark mode support**: CSS variables and media queries
+1. Create `blog/<slug>/index.html` by copying an existing post (it links `../../style.css`)
+2. Fill in title, description, canonical, and Open Graph / Twitter meta
+3. Make a share card in `img/share/<slug>.jpg` at 1200x630 matching the existing ones
+4. Link it from the Speaking and writing list in `index.html`
+5. Add it to `sitemap.xml`
 
-## Content Structure
+## Notes
 
-The site includes sections for:
-- Personal introduction
-- Speaking and writing portfolio
-- Coaching and advising services
-- Creative experiments and projects
-
-## Development Notes
-
-- No TypeScript, no build tools - direct file editing
-- Uses live-server for local development
-- All assets (images, styles, scripts) are committed to repository
-- API token in config.js appears unused and should be reviewed for security
+- Projects (Harness, World Clock, Sounds) live in separate repos served under the same domain, so they're linked with relative paths in the same tab
+- `art-generator.js`, `experiments/`, `img/backgrounds/`, and the unused images in `img/` are leftovers not referenced by any page
+- `config.js` is gitignored and unused
